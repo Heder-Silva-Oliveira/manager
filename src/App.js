@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import CreateClient from './pages/CreateClient';
+import CreateProduct from './pages/CreatProduct';
+import Dashboard from './pages/Dashboard'
+import Sales from './pages/Sales';
+
+import {BrowserRouter as Router, Route, Routes, } from 'react-router-dom';
+import GlobalStyle from './styles/GlobalStyle';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+    return (
+      <>
+      <Router>
+        <GlobalStyle/>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/home" element={<Dashboard />} />
+              <Route path="/cadastro-cliente" element={<CreateClient />} />
+              <Route path="/cadastro-produto" element={<CreateProduct />} />
+              <Route path="/vendas" element={<Sales/>} />           
+            </Routes>          
+          </div>   
+      </Router>
+      </>
+     
+    );
+  }
+  
+  export default App;
