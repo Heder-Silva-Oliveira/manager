@@ -1,7 +1,4 @@
 import React  from "react";
-import ChartBar from "../../components/Charts/BarChart";
-import ChartDonut from "../../components/Charts/DonutChart";
-import ChartLine from "../../components/Charts/LineChart/index"
 import Conte from "../../components/Content/index";
 import Tabs from "../../components/Table";
 
