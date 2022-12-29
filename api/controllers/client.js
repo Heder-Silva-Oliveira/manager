@@ -39,7 +39,6 @@ export const addClient = (req, res) => {
       "UPDATE client SET `name`= ? ,`birthdate`= ?,`address`= ?,`number`= ?,`numbertwo`=?,`email`=?, `cpf`=?, `more`=? WHERE `id` = ?";
     
     const values = [
-       
         req.body.name,
         req.body.birthdate,
         req.body.address,

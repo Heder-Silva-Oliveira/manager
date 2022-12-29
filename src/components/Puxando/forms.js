@@ -42,7 +42,7 @@ const Button = styled.button`
 const Form = ({ getUsers, onEdit, setOnEdit }) => {
   const ref = useRef();
   useEffect(() => {
-    
+  
     if (onEdit) {
       const user = ref.current;
       
@@ -59,12 +59,10 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     const user = ref.current;
-    console.log(user)
-
-    if (
    
+    if (
+      
       !user.name.value ||
       !user.birthdate.value ||
       !user.address.value ||
@@ -77,9 +75,9 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
       return toast.warn("Preencha todos os campos!");
     }
 
-    if (onEdit) {
+    if (onEdit) {    
       await axios
-        .put("http://localhost:8800/" + onEdit.id, {
+          .put("http://localhost:8800/" + onEdit.id, {
           name:  user.name.value, 
           birthdate:  user.birthdate.value, 
           address:  user.address.value, 
@@ -88,6 +86,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
           email:  user.email.value, 
           cpf:  user.cpf.value, 
           more:  user.more.value, 
+          
         })
         .then(({ data }) => toast.success(data))
         .catch(({ data }) => toast.error(data));
@@ -116,17 +115,16 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
     user.email.value =""; 
     user.cpf.value =""; 
     user.more.value =""; 
-
+    
     setOnEdit(null);
     getUsers();
   };
- 
+
   return (
     <FormContainer ref={ref} onSubmit={handleSubmit}>
-
       <InputArea>
         <Label>Nome</Label>
-        <Input name="name" />
+        <Input name="name"  type= "text"/>
       </InputArea>
       <InputArea>
         <Label>Data nascimento</Label>
@@ -142,7 +140,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
       </InputArea>
       <InputArea>
         <Label>Outro telefone</Label>
-        <Input name="numbertwo"/>
+        <Input name="numbertwo" />
       </InputArea>
       <InputArea>
         <Label>E-mail</Label>
@@ -154,10 +152,10 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
       </InputArea>
       <InputArea>
         <Label>Mais informações</Label>
-        <Input name="more"/>
+        <Input name="more" type= "text"/>
       </InputArea>
 
-      <Button type="submit">SALVAR</Button>
+      <Button type="submit" onClick={handleSubmit}>SALVAR</Button>
     </FormContainer>
   );
 };
