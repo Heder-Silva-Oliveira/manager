@@ -1,6 +1,6 @@
 import React from "react";
 import Conte from "../../components/Content/index";
-import Mostrar from "./tableProduct";
+import Mostrar from "./tableSuply";
 
 
 

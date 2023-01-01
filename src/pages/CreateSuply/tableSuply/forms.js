@@ -26,7 +26,15 @@ const Input = styled.input`
   border-radius: 5px;
   height: 40px;
 `;
-
+/*
+const Select = styled.select`
+  width: 120px;
+  padding: 0 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  height: 40px;
+`;
+*/
 const Label = styled.label``;
 
 const Button = styled.button`
@@ -39,85 +47,77 @@ const Button = styled.button`
   height: 42px;
 `;
 
-const Form = ({ getUsers, onEdit, setOnEdit }) => {
+const Form = ({ getSuply, onEdit, setOnEdit }) => {
   const ref = useRef();
   useEffect(() => {
-  
+  console.log(ref)
     if (onEdit) {
-      const user = ref.current;
+      const suply = ref.current;
       
-      user.name.value = onEdit.name;
-      user.birthdate.value = onEdit.birthdate;
-      user.address.value = onEdit.address;
-      user.number.value = onEdit.number;
-      user.numbertwo.value = onEdit.numbertwo;
-      user.email.value = onEdit.email;
-      user.cpf.value = onEdit.cpf;
-      user.more.value = onEdit.more;
+      suply.name.value = onEdit.name;
+      suply.address.value = onEdit.address;
+      suply.number.value = onEdit.number;
+      suply.numbertwo.value = onEdit.numbertwo;
+      suply.email.value = onEdit.email;
+      suply.cnpj.value = onEdit.cnpj;
+   
     }
   }, [onEdit]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = ref.current;
+    const suply = ref.current;
    
     if (
       
-      !user.name.value ||
-      !user.birthdate.value ||
-      !user.address.value ||
-      !user.number.value ||
-      !user.numbertwo.value ||
-      !user.email.value ||
-      !user.cpf.value ||
-      !user.more.value 
+      !suply.name.value ||
+      !suply.address.value ||
+      !suply.number.value ||
+      !suply.numbertwo.value ||
+      !suply.email.value ||
+      !suply.cnpj.value 
+
     ) {
       return toast.warn("Preencha todos os campos!");
     }
 
     if (onEdit) {    
       await axios
-          .put("http://localhost:8800/" + onEdit.id, {
-          name:  user.name.value, 
-          birthdate:  user.birthdate.value, 
-          address:  user.address.value, 
-          number:  user.number.value, 
-          numbertwo:  user.numbertwo.value, 
-          email:  user.email.value, 
-          cpf:  user.cpf.value, 
-          more:  user.more.value, 
+          .put("http://localhost:8800/suply/" + onEdit.id, {
+          name:  suply.name.value, 
+          address:  suply.address.value, 
+          number:  suply.number.value, 
+          numbertwo:  suply.numbertwo.value, 
+          email:  suply.email.value, 
+          cnpj:  suply.cnpj.value, 
           
         })
         .then(({ data }) => toast.success(data))
         .catch(({ data }) => toast.error(data));
     } else {
       await axios
-        .post("http://localhost:8800", {
+        .post("http://localhost:8800/suply/", {
          
-          name:  user.name.value, 
-          birthdate:  user.birthdate.value, 
-          address:  user.address.value, 
-          number:  user.number.value, 
-          numbertwo:  user.numbertwo.value, 
-          email:  user.email.value, 
-          cpf:  user.cpf.value, 
-          more:  user.more.value,
+          name:  suply.name.value, 
+          address:  suply.address.value, 
+          number:  suply.number.value, 
+          numbertwo:  suply.numbertwo.value, 
+          email:  suply.email.value, 
+          cnpj:  suply.cnpj.value, 
         })
         .then(({ data }) => toast.success(data))
         .catch(({ data }) => toast.error(data));
     }
     
-    user.name.value= ""; 
-    user.birthdate.value =""; 
-    user.address.value =""; 
-    user.number.value =""; 
-    user.numbertwo.value =""; 
-    user.email.value =""; 
-    user.cpf.value =""; 
-    user.more.value =""; 
+    suply.name.value= ""; 
+    suply.address.value =""; 
+    suply.number.value =""; 
+    suply.numbertwo.value =""; 
+    suply.email.value =""; 
+    suply.cnpj.value =""; 
     
     setOnEdit(null);
-    getUsers();
+    getSuply();
   };
 
   return (
@@ -125,10 +125,6 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
       <InputArea>
         <Label>Nome</Label>
         <Input name="name"  type= "text"/>
-      </InputArea>
-      <InputArea>
-        <Label>Data nascimento</Label>
-        <Input name="birthdate" type="date" />
       </InputArea>
       <InputArea>
         <Label>Endereço</Label>
@@ -147,13 +143,10 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
         <Input name="email" type= "email"/>
       </InputArea>
       <InputArea>
-        <Label>CPF</Label>
-        <Input name="cpf"/>
+        <Label>CNPJ</Label>
+        <Input name="cnpj"/>
       </InputArea>
-      <InputArea>
-        <Label>Mais informações</Label>
-        <Input name="more" type= "text"/>
-      </InputArea>
+
 
       <Button type="submit" onClick={handleSubmit}>SALVAR</Button>
     </FormContainer>

@@ -22,10 +22,16 @@ class NavBar extends React.Component{
                                   <Span>Cadastro Cliente</Span>                          
                                 </Li>
                              </Link> 
-                             <Link to="/cadastro-produto" style={{ textDecoration: 'none' }}> 
+                             <Link to="/cadastro-fornecedor" style={{ textDecoration: 'none' }}> 
                               <Li>
                                 <Icon>****</Icon> 
-                                  <Span>Cadastro produto</Span>                          
+                                  <Span>Cadastro fornecedor</Span>                          
+                                </Li>
+                             </Link>
+                             <Link to="/cadastro-produtos" style={{ textDecoration: 'none' }}> 
+                              <Li>
+                                <Icon>****</Icon> 
+                                  <Span>Cadastro produtos</Span>                          
                                 </Li>
                              </Link>
                              <Link to="/vendas" style={{ textDecoration: 'none' }}> 

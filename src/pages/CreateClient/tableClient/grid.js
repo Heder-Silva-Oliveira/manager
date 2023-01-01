@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { FaTrash, FaEdit } from "react-icons/fa";
+import { FaTrash, FaEdit} from "react-icons/fa";
 import { toast } from "react-toastify";
 
 const Table = styled.table`
@@ -59,6 +59,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
     setOnEdit(null);
   };
 
+
   return (
     <Table>
       <Thead>
@@ -71,9 +72,9 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
           <Th>Outro Telefone</Th>
           <Th>Email</Th>
           <Th>CPF</Th>
-    
-          <Th></Th>
-          <Th></Th>
+ 
+          <Th>Editar</Th>
+          <Th>Deletar</Th>
         </Tr>
       </Thead>
       <Tbody>

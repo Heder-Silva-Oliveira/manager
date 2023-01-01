@@ -13,7 +13,7 @@ export const getClient = (_, res) => {
 
 export const addClient = (req, res) => {
     const q =
-      "INSERT INTO client (`name`, `birthdate`, `address`, `number`, `numbertwo`, `email`, `cpf`, `more`) VALUES (?)";
+      "INSERT INTO client (`name`, `birthdate`, `address`, `number`, `numbertwo`, `email`, `cpf`, `genre`) VALUES (?)";
     const values = [
       
       req.body.name,
@@ -23,7 +23,7 @@ export const addClient = (req, res) => {
       req.body.numbertwo,
       req.body.email,
       req.body.cpf,
-      req.body.more,
+      req.body.genre,
     ];
   
     db.query(q, [values], (err) => {
@@ -36,7 +36,7 @@ export const addClient = (req, res) => {
   export const updateClient = (req, res) => {
     const q =
     
-      "UPDATE client SET `name`= ? ,`birthdate`= ?,`address`= ?,`number`= ?,`numbertwo`=?,`email`=?, `cpf`=?, `more`=? WHERE `id` = ?";
+      "UPDATE client SET `name`= ? ,`birthdate`= ?,`address`= ?,`number`= ?,`numbertwo`=?,`email`=?, `cpf`=?, `genre`=? WHERE `id` = ?";
     
     const values = [
         req.body.name,
@@ -46,7 +46,7 @@ export const addClient = (req, res) => {
         req.body.numbertwo,
         req.body.email,
         req.body.cpf,
-        req.body.more,
+        req.body.genre,
     ];
   
     db.query(q, [...values, req.params.id], (err) => {
@@ -65,3 +65,4 @@ export const addClient = (req, res) => {
       return res.status(200).json("Usuário deletado com sucesso.");
     });
   };
+  

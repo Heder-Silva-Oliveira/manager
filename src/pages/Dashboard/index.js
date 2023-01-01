@@ -22,7 +22,7 @@ class Dashboard extends  React.Component{
                             </label>
                         </Div1>
                         <Div2>
-                        <label>Resumo de vrodutos
+                        <label>Resumo de produtos
                             <ChartBar/>
                             </label>
                         </Div2>
