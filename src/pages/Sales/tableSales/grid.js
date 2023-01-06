@@ -4,60 +4,67 @@ import { FaTrash, FaEdit} from "react-icons/fa";
 import { toast } from "react-toastify";
 import {Thead, Table, Tbody, Tr, Th, Td} from "../../../components/Table/styles"
 
-const Grid = ({suplys, product, setProduct, setOnEdit }) => {
+const Grid = ({product, client, sales, setSales, setOnEdit }) => {
   const handleEdit = (item) => {
     setOnEdit(item);
   };
 
   const handleDelete = async (id) => {
     await axios
-      .delete("http://localhost:8800/product/"+ id)
+      .delete("http://localhost:8800/sales"+ id)
       .then(({ data }) => {
-        const newArray = product.filter((product) => product.id !== id);
+        const newArray = sales.filter((sales) => sales.id !== id);
 
-        setProduct(newArray);
+        setSales(newArray);
         toast.success(data);
       })
       .catch(({ data }) => toast.error(data));
 
     setOnEdit(null);
-  };
 
- function busca(paran){
-  const namesf = suplys.filter((suplys) => suplys.id === paran)
-  const sonome = namesf.map((item) => ( item.name))
-   return( 
-   sonome
-   )
- };
+  };
+  function getNameClient(paran){
+    const namesf = client.filter((client) => client.id === paran)
+    const sonome = namesf.map((item) => ( item.name))
+      return( 
+      sonome
+      )}
+     
+  function getNameProduct(paran){
+    const namesf = product.filter((product) => product.id === paran)
+    const sonome = namesf.map((item) => ( item.name))
+      return( 
+      sonome
+      )}
 
   return (
     <Table>
       <Thead>
         <Tr>
           <Th>Codigo</Th>
-          <Th>Nome</Th>
-          <Th>Fornecedor</Th>
-          <Th>Preço de compra</Th>
-          <Th>Preço de venda</Th>
+          <Th>Produto</Th>
+          <Th>Nome Cliente</Th>
           <Th>Quantiade</Th>
-          <Th>Data da compra</Th>
+          <Th>Valor da venda</Th>
+          <Th>Lucro</Th>
+          <Th>Pagamento</Th>
+          <Th>Data</Th>
  
           <Th>Editar</Th>
           <Th>Deletar</Th>
         </Tr>
       </Thead>
       <Tbody>
-        {product.map((item, i) => (
+        {sales.map((item, i) => (
           <Tr key={i}>
             <Td >{item.id}</Td>
-            <Td >{item.name}</Td>           
-            <Td >{busca(item.fkSuply)} </Td>          
-            <Td >{item.pricebuy }</Td>
-            <Td >{item.pricesell }</Td>
+            <Td >{getNameProduct(item.fkproduct)}</Td>
+            <Td >{getNameClient(item.fkclient)}</Td>
             <Td >{item.quant}</Td>
+            <Td >{item.mont}</Td>
+            <Td >{item.profit}</Td>
+            <Td >{item.typePay}</Td>
             <Td >{item.selldate}</Td>
-
 
             <Td alignCenter width="5%">
               <FaEdit onClick={() => handleEdit(item)} />

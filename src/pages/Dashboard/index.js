@@ -3,7 +3,7 @@ import ChartBar from "../../components/Charts/BarChart";
 import ChartDonut from "../../components/Charts/DonutChart";
 import ChartLine from "../../components/Charts/LineChart/index"
 import Conte from "../../components/Content/index";
-import Tabs from "../../components/Table";
+
 
 import {Content, Div1, Div2, Div3, Historic} from "./styles"
 
@@ -32,7 +32,7 @@ class Dashboard extends  React.Component{
                             </label>
                         </Div3>
                         <Historic>
-                            <Tabs/>
+                            
                         </Historic>
             
                     </Content>

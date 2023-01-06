@@ -54,6 +54,7 @@ export const addProduct = (req, res) => {
   
   export const deleteProduct = (req, res) => {
     const q = "DELETE FROM product WHERE `id` = ?";
+   
   
     db.query(q, [req.params.id], (err) => {
       if (err) return res.json(err);

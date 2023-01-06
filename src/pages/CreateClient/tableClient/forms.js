@@ -1,51 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
 import { toast } from "react-toastify";
-
-const FormContainer = styled.form`
-  display: flex;
-  align-items: flex-end;
-  gap: 10px;
-  flex-wrap: wrap;
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0px 0px 5px #ccc;
-  border-radius: 5px;
-`;
-
-const InputArea = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Input = styled.input`
-  width: 120px;
-  padding: 0 10px;
-  border: 1px solid #bbb;
-  border-radius: 5px;
-  height: 40px;
-`;
-
-const Select = styled.select`
-  width: 120px;
-  padding: 0 10px;
-  border: 1px solid #bbb;
-  border-radius: 5px;
-  height: 40px;
-`;
-
-const Label = styled.label``;
-
-const Button = styled.button`
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  border: none;
-  background-color: #2c73d2;
-  color: white;
-  height: 42px;
-`;
+import {FormContainer, Select, Label, InputArea, Input, Button} from "../../../components/Table/styles"
 
 const Form = ({ getUsers, onEdit, setOnEdit }) => {
   const ref = useRef();
@@ -85,7 +41,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
 
     if (onEdit) {    
       await axios
-          .put("http://localhost:8800/" + onEdit.id, {
+          .put("http://localhost:8800/client/" + onEdit.id, {
           name:  user.name.value, 
           birthdate:  user.birthdate.value, 
           address:  user.address.value, 
@@ -100,7 +56,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
         .catch(({ data }) => toast.error(data));
     } else {
       await axios
-        .post("http://localhost:8800/", {
+        .post("http://localhost:8800/client", {
          
           name:  user.name.value, 
           birthdate:  user.birthdate.value, 

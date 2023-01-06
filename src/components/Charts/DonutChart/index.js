@@ -2,12 +2,13 @@ import ApexCharts from "react-apexcharts";
 
 
 export default function ChartDonut(){
+  
 
     return(
         <ApexCharts
         type="donut"
         width= "160%"
-        series={[100,200]}
+        series={[200, 500]}
         
         options={{
             legend: {

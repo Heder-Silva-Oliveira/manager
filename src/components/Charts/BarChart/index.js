@@ -1,7 +1,36 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import ApexCharts from "react-apexcharts";
 
-
 export default function ChartBar(){
+
+    const [sales, setSales] = useState([]);
+    
+    const getSales = async () => {
+      try {
+        const res = await axios.get("http://localhost:8800/sales");
+        setSales(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+      } catch (error) {
+      
+      }
+    };
+  
+    useEffect(() => {
+  
+      getSales();
+    }, [setSales]);
+  
+  const dataL =[];
+  
+      sales.map((item) => (
+          dataL.push( item.profit))); 
+    
+  
+    const dataV =[];
+    
+      sales.map((item) => (
+          dataV.push( item.mont))); 
+    
 
     return(
         <ApexCharts
@@ -9,13 +38,16 @@ export default function ChartBar(){
         width= "160%"
         series={[
             {
-                name: "Company1",
-                data: [100,200,232,132,422,132,260,250]
+                name: "Venda",
+                data: dataV
+                
+               
                 
             },
             {
-                name: "Company1",
-                data: [112,190,200,152,302,172,210,205]
+                name: "Lucro",
+                data: dataL 
+                
             }
         ]}
         options={{

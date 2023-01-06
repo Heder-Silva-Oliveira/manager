@@ -1,3 +1,4 @@
+
 import ApexCharts from "react-apexcharts";
 
 
@@ -11,14 +12,17 @@ export default function ChartLine(){
         series={[
       
             {
-                name: "Venda",
-                data: [100,200,232,132,422,132,260,250]
+                name: "lucro",
+                data: [112,190,200,152,302,172,210,205]
+                     
+                    
+                  
                 
             
             },
             {
-                name: "Compra",
-                data: [112,190,200,152,302,172,210,205]
+                name: "venda",
+                data: [100,200,232,132,422,132,260,250]
                
             }
         ]}

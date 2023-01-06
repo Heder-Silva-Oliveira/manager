@@ -18,10 +18,22 @@ const Container = styled.div`
 
 const Title = styled.h2``;
 
+
 function Mostrar() {
-  const [suplys, setSuply] = useState([]);
+  const [sales, setSales] = useState([]);
   const [product, setProduct] = useState([]);
+  const [client, setClient] = useState([]);
   const [onEdit, setOnEdit] = useState(null);
+
+  
+  const getSales = async () => {
+    try {
+      const res = await axios.get("http://localhost:8800/sales");
+      setSales(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+    } catch (error) {
+      toast.error(error);
+    }
+  };
 
   const getProduct = async () => {
     try {
@@ -30,30 +42,29 @@ function Mostrar() {
     } catch (error) {
       toast.error(error);
     }
-
   };
 
-  const getSuply = async () => {
+  const getClient = async () => {
     try {
-      const res = await axios.get("http://localhost:8800/suply");
-      setSuply(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)),);
+      const res = await axios.get("http://localhost:8800/client");
+      setClient(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
     } catch (error) {
       toast.error(error);
     }
   };
 
-
   useEffect(() => {
-    getSuply();
     getProduct();
-  }, [setProduct]);
+    getClient();
+    getSales();
+  }, [setSales]);
 
   return (
     <>
       <Container>
-        <Title>Cadastro Produtos</Title>
-        <Form suplys={suplys} onEdit={onEdit} setOnEdit={setOnEdit} getProduct={getProduct} />
-        <Grid suplys={suplys} product={product} setProduct={setProduct} setOnEdit={setOnEdit}/>
+        <Title>Vendas</Title>
+        <Form product={product} client={client} onEdit={onEdit} setOnEdit={setOnEdit} getSales={getSales}/>
+        <Grid product={product} client={client}  sales={sales} setSales={setSales} setOnEdit={setOnEdit}/>
       </Container>
       <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
     </>

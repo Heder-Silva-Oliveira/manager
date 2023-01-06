@@ -5,7 +5,7 @@ import Mostrar from "./tableClient";
 
 
 
-import {Forms, Camp, Analy, List } from "./styles";
+import {Forms, Camp } from "./styles";
 
 class CreateClient extends  React.Component{
     
@@ -20,11 +20,7 @@ class CreateClient extends  React.Component{
                             </Camp>
 
                         </Forms>
-                        <Analy>Oi</Analy>
-                        <List>
-
-                        </List>
-                              
+                        
                 </Conte>
 
                             

@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import {Table, Tr, Th, Td } from "./styles";
 
 
@@ -29,4 +29,4 @@ class Tabs extends React.Component{
         )
     }     
 }
-export default  Tabs
+export default  Tabs*/

@@ -1,8 +1,8 @@
 import React  from "react";
 import Conte from "../../components/Content/index";
-import Tabs from "../../components/Table";
 
-import {Content, Div1, InputS, Label, Historic,Box, Box2,} from "./styles"
+import {Content,} from "./styles"
+import Mostrar from "./tableSales";
 
 
 class Dashboard extends  React.Component{
@@ -11,64 +11,7 @@ class Dashboard extends  React.Component{
            <>
                 <Conte>
                     <Content>
-
-                        <Div1 >
-                        <Box>
-                            <hi>Vendas</hi>
-                                <Label>Produto
-                                    <InputS placeholder="Nome do produto" type={"text"}></InputS>
-                                </Label>
-                                <Label>Cliente
-                                    <InputS placeholder="Quanto lucrar" type={"text"}></InputS>
-                                </Label>
-                                <Label>Produto
-                                    <InputS placeholder="Nome do produto" type={"text"}></InputS>
-                                </Label>
-                                <Label>Cliente
-                                    <InputS placeholder="Quanto lucrar" type={"text"}></InputS>
-                                </Label>
-                                <Label>Codigo
-                                    <InputS placeholder="Digite o codigo" type={"number"}></InputS>
-                                </Label>           
-                                <Label>Produto
-                                    <InputS placeholder="Nome do produto" type={"text"}></InputS>
-                                </Label>
-                                <Label>Cliente
-                                    <InputS placeholder="Quanto lucrar" type={"text"}></InputS>
-                                </Label>
-                                <Label>Codigo
-                                    <InputS placeholder="Digite o codigo" type={"number"}></InputS>
-                                </Label>
-                                <Label>Produto
-                                    <InputS placeholder="Nome do produto" type={"text"}></InputS>
-                                </Label>
-                                <Label>Cliente
-                                    <InputS placeholder="Quanto lucrar" type={"text"}></InputS>
-                                </Label>
-                                <Label>Codigo
-                                    <InputS placeholder="Digite o codigo" type={"number"}></InputS>
-                                </Label>
-                                <Label>Produto
-                                    <InputS placeholder="Nome do produto" type={"text"}></InputS>
-                                </Label>
-                                <Label>Cliente
-                                    <InputS placeholder="Quanto lucrar" type={"text"}></InputS>
-                                </Label>
-                                <Label>Codigo
-                                    <InputS placeholder="Digite o codigo" type={"number"}></InputS>
-                                </Label>
-                            </Box>
-                            <Box2>
-                                <Label>Codigo
-                                    <InputS placeholder="Digite o codigo" type={"number"}></InputS>
-                                </Label>
-                            </Box2>
-                            
-                        </Div1>
-                        <Historic>
-                            <Tabs/>
-                        </Historic>
-            
+                        <Mostrar/>
                     </Content>
                 </Conte>
 

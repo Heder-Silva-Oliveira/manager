@@ -18,14 +18,15 @@ const Container = styled.div`
 
 const Title = styled.h2``;
 
+
 function Mostrar() {
-  const [suply, setSuply] = useState([]);
+  const [suplys, setSuply] = useState([]);
   const [onEdit, setOnEdit] = useState(null);
 
   const getSuply = async () => {
     try {
       const res = await axios.get("http://localhost:8800/suply");
-      setSuply(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+      setSuply(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)),);
     } catch (error) {
       toast.error(error);
     }
@@ -34,13 +35,18 @@ function Mostrar() {
   useEffect(() => {
     getSuply();
   }, [setSuply]);
-
+  
+//tentar passar o array comop parametro par ao form
+//um novo set 
   return (
     <>
+   
+
+
       <Container>
         <Title>Cadastro Fornecedores</Title>
         <Form onEdit={onEdit} setOnEdit={setOnEdit} getSuply={getSuply} />
-        <Grid suply={suply} setSuply={setSuply} setOnEdit={setOnEdit}/>
+        <Grid suplys={suplys} setSuply={setSuply} setOnEdit={setOnEdit}/>
       </Container>
       <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
     </>
@@ -48,3 +54,4 @@ function Mostrar() {
 }
 
 export default Mostrar;
+
