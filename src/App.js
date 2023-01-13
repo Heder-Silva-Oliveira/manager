@@ -6,6 +6,7 @@ import CreateSuply from './pages/CreateSuply';
 
 import {BrowserRouter as Router, Route, Routes, } from 'react-router-dom';
 import GlobalStyle from './styles/GlobalStyle';
+import Adm from './pages/Adm/adm';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
               <Route path="/cadastro-fornecedor" element={<CreateSuply/>} />
               <Route path="/cadastro-produtos" element={<CreateProduct/>} />             
               <Route path="/vendas" element={<Sales/>} /> 
+              <Route path="/adm" element={<Adm/>} /> 
             </Routes>          
           </div>   
       </Router>

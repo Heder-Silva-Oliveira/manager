@@ -1,9 +1,15 @@
 import React from "react";
 import axios from "axios";
-import { FaTrash, FaEdit} from "react-icons/fa";
+import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
-import {Thead, Table, Tbody, Tr, Th, Td} from "../../../components/Table/styles"
-
+import {
+  Thead,
+  Table,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+} from "../../../components/Table/styles";
 
 const Grid = ({ suplys, setSuply, setOnEdit }) => {
   const handleEdit = (item) => {
@@ -24,7 +30,6 @@ const Grid = ({ suplys, setSuply, setOnEdit }) => {
     setOnEdit(null);
   };
 
-
   return (
     <Table>
       <Thead>
@@ -36,7 +41,7 @@ const Grid = ({ suplys, setSuply, setOnEdit }) => {
           <Th>Outro Telefone</Th>
           <Th>Email</Th>
           <Th>CNPJ</Th>
- 
+
           <Th>Editar</Th>
           <Th>Deletar</Th>
         </Tr>
@@ -44,14 +49,14 @@ const Grid = ({ suplys, setSuply, setOnEdit }) => {
       <Tbody>
         {suplys.map((item, i) => (
           <Tr key={i}>
-            <Td >{item.id}</Td>
-            <Td >{item.name}</Td>
-            <Td >{item.address}</Td>
-            <Td >{item.number}</Td>
-            <Td >{item.numbertwo}</Td>
-            <Td >{item.email}</Td>
-            <Td >{ item.cnpj}</Td>
-           
+            <Td>{item.id}</Td>
+            <Td>{item.name}</Td>
+            <Td>{item.address}</Td>
+            <Td>{item.number}</Td>
+            <Td>{item.numbertwo}</Td>
+            <Td>{item.email}</Td>
+            <Td>{item.cnpj}</Td>
+
             <Td alignCenter width="5%">
               <FaEdit onClick={() => handleEdit(item)} />
             </Td>
